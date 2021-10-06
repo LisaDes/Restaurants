@@ -24,9 +24,12 @@
     Page courante : {{page}}
     <br>
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
-        <md-table-row @click="supprimerRestaurant(item)" slot="md-table-row" slot-scope="{ item }">
+        <md-table-row slot="md-table-row" slot-scope="{ item }">
           <md-table-cell md-label="Nom" md-sort-by="name">{{ item.name }}</md-table-cell>
           <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{ item.cuisine }}</md-table-cell>
+          <md-table-cell md-label="Actions">
+              <router-link :to="'/restaurant/' + item._id">[Détail]</router-link>
+          </md-table-cell>
         </md-table-row>
     </md-table>
   </div>

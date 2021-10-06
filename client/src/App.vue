@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <ListeDesRestaurants msg="Coucou les M1"/>
-    <HelloWorld/>
+    <router-link to='/'>[Home]</router-link>
+    <router-link to='/restaurant'>[Restaurants]</router-link>
+    <router-link to='/hello'>[Hello]</router-link>
+    
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import ListeDesRestaurants from './components/ListeDesRestaurants.vue'
 
 export default {
   name: 'App',
   components: {
-    ListeDesRestaurants,
-    HelloWorld
   }
 }
 </script>
