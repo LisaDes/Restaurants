@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
-    <h1>{{msg}}</h1>
+  <div id="hello">
+    <h1 style="text-align:center">{{msg}}</h1>
+    <h2 style="margin-left:20px">TOP 5 des restaurants du moment</h2>
   </div>
 </template>
 
@@ -15,5 +16,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  #hello{
+    text-align: left;
+  }
 </style>

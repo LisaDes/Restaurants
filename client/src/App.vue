@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>LiWen Kouzine</h1>
     <div id="menu">
       <md-menu md-direction="bottom-end" :mdCloseOnClick="closeOnClick" md-offset-x=20>
         <md-button md-menu-trigger class="md-icon-button">
@@ -36,8 +37,5 @@ export default {
 }
 #menu{
   text-align: left;
-}
-#marque{
-  text-align: center;
 }
 </style>
