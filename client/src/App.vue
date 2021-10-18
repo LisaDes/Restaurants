@@ -7,8 +7,18 @@
           <md-icon>menu</md-icon>
         </md-button>
         <md-menu-content>
-          <md-menu-item to='/'>Home</md-menu-item>
-          <md-menu-item to='/restaurants'>Liste des Restaurants</md-menu-item>
+          <md-menu-item to='/' >
+            <md-icon>home</md-icon>
+            Home
+          </md-menu-item>
+          <md-menu-item to='/restaurants'>
+            <md-icon>menu</md-icon>
+            Liste des Restaurants
+          </md-menu-item>
+          <md-menu-item to='/ajout'>
+            <md-icon>add</md-icon>
+            Ajouter un restaurant
+          </md-menu-item>
         </md-menu-content>
       </md-menu>
     </div>
