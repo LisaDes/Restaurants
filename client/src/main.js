@@ -17,13 +17,13 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     {
-      path: '/',
+      path: '/restaurants',
       component: ListeDesRestaurants
     },{
-      path: '/hello',
+      path: '/',
       component: HelloWorld,
       props:{
-        msg: "Coucou la MIAGE"
+        msg: "Acceuil"
       }
     },{
       path: '/restaurant/:id',
