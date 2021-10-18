@@ -92,13 +92,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.phone-viewport {
-    width: 322px;
-    height: 200px;
-    display: inline-flex; 
-    align-items: flex-end;
-    overflow: hidden;
-    border: 1px solid rgba(#000, .26);
-    background: rgba(#000, .06);
-  }
 </style>
