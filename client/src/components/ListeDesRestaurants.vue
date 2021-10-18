@@ -32,17 +32,6 @@
           </md-table-cell>
         </md-table-row>
     </md-table>
-
-    <!-- TEST DE CE QUE L'ON PEUT FAIRE-->
-    
-    <div class="phone-viewport">
-      <md-bottom-bar md-sync-route>
-        <img src='../assets/Test.jpg'>
-        <md-bottom-bar-item :to="'/restaurant/' + item._id" exact md-label="Home" md-icon="home"></md-bottom-bar-item>
-        <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Posts" md-icon="/assets/icon-whatshot.svg"></md-bottom-bar-item>
-        <md-bottom-bar-item to="/components/bottom-bar/favorites" md-label="Favorites" md-icon="favorite"></md-bottom-bar-item>
-      </md-bottom-bar>
-    </div>
   </div>
 </template>
 
