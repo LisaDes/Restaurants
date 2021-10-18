@@ -23,7 +23,7 @@ const router = new VueRouter({
       path: '/',
       component: HelloWorld,
       props:{
-        msg: "Acceuil"
+        msg: "Accueil"
       }
     },{
       path: '/restaurant/:id',
