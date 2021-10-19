@@ -7,7 +7,7 @@
           <md-icon>menu</md-icon>
         </md-button>
         <md-menu-content>
-          <md-menu-item to='/home' >
+          <md-menu-item to='/' >
             <md-icon>home</md-icon>
             Home
           </md-menu-item>
