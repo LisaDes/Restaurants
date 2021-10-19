@@ -7,44 +7,46 @@
       <div class="phone-viewport">
         <md-bottom-bar md-sync-route>
           <img src="../assets/Test.jpg">
-          <md-bottom-bar-item to="/restaurant/61498206b78fc79dd36f722e" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Restaurant"></md-bottom-bar-item>
+          <md-bottom-bar-item :to="'/restaurant/'+this.restaurants[0]._id"  md-label="Détails" md-icon="info"></md-bottom-bar-item>
+          <md-bottom-bar-item  exact :md-label="this.restaurants[0].name"></md-bottom-bar-item>
+          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          </md-bottom-bar>
+      </div>
+      <div class="phone-viewport">
+        <md-bottom-bar md-sync-route >
+          <img src="../assets/Test.jpg">
+          <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[1]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
+          <md-bottom-bar-item :md-label="this.restaurants[1].name"></md-bottom-bar-item>
           <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
         <md-bottom-bar md-sync-route>
           <img src="../assets/Test.jpg">
-          <md-bottom-bar-item to="/restaurant/61498206b78fc79dd36f722e" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Restaurant"></md-bottom-bar-item>
+          <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[2]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
+          <md-bottom-bar-item :md-label="this.restaurants[2].name"></md-bottom-bar-item>
           <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
         <md-bottom-bar md-sync-route>
           <img src="../assets/Test.jpg">
-          <md-bottom-bar-item to="/restaurant/61498206b78fc79dd36f722e" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Restaurant"></md-bottom-bar-item>
+          <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[3]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
+          <md-bottom-bar-item :md-label="this.restaurants[3].name"></md-bottom-bar-item>
           <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
         <md-bottom-bar md-sync-route>
           <img src="../assets/Test.jpg">
-          <md-bottom-bar-item to="/restaurant/61498206b78fc79dd36f722e" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Restaurant"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
-          </md-bottom-bar>
-      </div>
-      <div class="phone-viewport">
-        <md-bottom-bar md-sync-route>
-          <img src="../assets/Test.jpg">
-          <md-bottom-bar-item to="/restaurant/61498206b78fc79dd36f722e" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Restaurant"></md-bottom-bar-item>
+          <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[4]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
+          <md-bottom-bar-item :md-label="this.restaurants[4].name"></md-bottom-bar-item>
           <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
          </md-bottom-bar>
       </div>
     </div>
+
+    
   </div>
 </template>
 
@@ -54,14 +56,16 @@ export default {
   props: {
     msg: String
   },
+  data: function(){
+     return {
+       restaurants:[5]
+     }
+  },
   mounted() {
     this.getRestaurantFromServer();
   },methods: {
     getRestaurantFromServer() {
       let url = "http://localhost:8080/api/restaurants?";
-      url += "page=" + this.page;
-      url += "&pagesize=" + this.pageSize;
-      url += "&name=" + this.nomRecherche;
 
       fetch(url)
         .then((responseJSON) => {
@@ -91,7 +95,7 @@ export default {
     width: 250px;
     height: 200px;
     display: inline-flex;
-    align-items: flex-end;
+    align-items: baseline;
     overflow: hidden;
     border: 1px solid rgba(#000, .26);
     background: rgba(#000, .06);
