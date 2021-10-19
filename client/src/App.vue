@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h1>LiWen Kouzine</h1>
-    <div id="menu">
-      <md-menu md-direction="bottom-end" :mdCloseOnClick="closeOnClick" md-offset-x=20>
+    <div id="menu" style="  background-color: #D375FF;">
+      <md-menu md-direction="bottom-end">
         <md-button md-menu-trigger class="md-icon-button">
           <md-icon>menu</md-icon>
         </md-button>
@@ -44,6 +44,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
 }
 #menu{
   text-align: left;
