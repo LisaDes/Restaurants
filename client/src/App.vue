@@ -7,15 +7,15 @@
           <md-icon>menu</md-icon>
         </md-button>
         <md-menu-content>
-          <md-menu-item to='/' >
+          <md-menu-item to='/home' >
             <md-icon>home</md-icon>
             Home
           </md-menu-item>
-          <md-menu-item to='/restaurants'>
+          <md-menu-item to='/ListeDesRestaurants'>
             <md-icon>menu</md-icon>
             Liste des Restaurants
           </md-menu-item>
-          <md-menu-item to='/ajout'>
+          <md-menu-item to='/AjouterUnRestaurant'>
             <md-icon>add</md-icon>
             Ajouter un restaurant
           </md-menu-item>

@@ -18,7 +18,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     {
-      path: '/restaurants',
+      path: '/ListeDesRestaurants',
       component: ListeDesRestaurants
     },{
       path: '/',
@@ -30,7 +30,7 @@ const router = new VueRouter({
       path: '/restaurant/:id',
       component: Restaurant
     },{
-      path: '/ajout',
+      path: '/AjouterUnRestaurant',
       component: AjouterRestaurant
     }
   ],
