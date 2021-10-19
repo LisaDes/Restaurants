@@ -110,8 +110,9 @@ app.get('/api/restaurants', function(req, res) {
 
     let name = req.query.name || '';
 
+	let ville = req.query.borough || '';
 
- 	mongoDBModule.findRestaurants(page, pagesize, name, function(data,count) {
+ 	mongoDBModule.findRestaurants(page, pagesize, name, ville, function(data,count) {
  		var objdData = {
  			msg:"restaurant recherchés avec succès",
  			data: data,
