@@ -102,6 +102,7 @@ export default {
       url += "page=" + this.page;
       url += "&pagesize=" + this.pageSize;
       url += "&name=" + this.nomRecherche;
+      url += "&ville=" + this.villeRecherche;
 
       fetch(url)
         .then((responseJSON) => {
