@@ -43,14 +43,20 @@
         <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{
           item.cuisine
         }}</md-table-cell>
-        <md-table-cell md-label="Ville" md-sort-by="ville">{{
+        <md-table-cell md-label="Ville" md-sort-by="borough">{{
           item.borough
         }}</md-table-cell>
-        <md-table-cell md-label="Note la plus récente" md-sort-by="note">{{
+        <md-table-cell md-label="Note la plus récente" md-sort-by="grades[0].score">{{
           item.grades[0].score
         }}</md-table-cell>
         <md-table-cell md-label="Actions">
-          <router-link :to="'/restaurant/' + item._id">[Détail]</router-link>
+           <md-button class="md-primary">
+             <router-link :to="'/restaurant/' + item._id">[Détail]</router-link>
+           </md-button>
+          
+          <md-button class="md-accent" @click="supprimerRestaurant(item._id)">[Supprimer]</md-button
+    >
+          
         </md-table-cell>
       </md-table-row>
     </md-table>
@@ -83,7 +89,8 @@ export default {
       pageSize: 10,
       nbPageTotal: 0,
       nomRecherche: "",
-      villeRecherche:""
+      villeRecherche:"",
+      score: 0
     };
   },
   methods: {

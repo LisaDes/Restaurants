@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>LiWen Kouzine</h1>
+    <h1>LiWen Kouizine</h1>
     <div id="menu" style="  background-color: #D375FF;">
       <md-menu md-direction="bottom-end">
         <md-button md-menu-trigger class="md-icon-button">

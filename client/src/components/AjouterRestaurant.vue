@@ -3,7 +3,7 @@
     <h1>Formulaire d'ajout de restaurant</h1>
      <form @submit="ajouterRestaurant($event)">
         <label>
-            Nom : <input name="nom" type="text" required v-model="name">
+            Nom : <input name="name" type="text" required v-model="name">
         </label>
         <label>
             Cuisine : <input name="cuisine" type="text" required v-model="cuisine">
@@ -37,8 +37,9 @@ export default {
     .then(response => {
       return response.json();
     }).then(data => {
-      console.log(data.restaurant.name)
       this.restaurant = data.restaurant
+      //console.log(data.restaurant.name)
+      console.log(data.name)
     })
   },
   methods : {
