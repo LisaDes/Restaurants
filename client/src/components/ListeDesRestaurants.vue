@@ -1,40 +1,34 @@
 <template>
   <div class="hello">
     <h1>Nombre de restaurants : {{ totalRestaurant }}</h1>
-    <p>
-      Chercher par nom :
-      <input @input="chercherRestaurant()" type="text" v-model="nomRecherche" />
-    </p>
-        <p>
-      Chercher par ville :
-      <input @input="chercherRestaurant()" type="text" v-model="villeRecherche" />
-    </p>
-
-    <p>
-      Nombre de restaurant par page :
-      <input
-        @change="getRestaurantFromServer()"
-        type="range"
-        min="2"
-        max="100"
-        value="10"
-        v-model="pageSize"
-      />{{ pageSize }}
-    </p>
-    <md-button
-      class="chgtPage md-raised"
-      :disabled="page === 1"
-      @click="pagePrecedent()"
-      >Précédent</md-button
-    >&nbsp;&nbsp;
-    <md-button
-      class="chgtPage md-raised"
-      :disabled="page === nbPageTotal"
-      @click="pageSuivante()"
-      >Suivant</md-button
-    >
+    <div class="md-layout md-gutter">
+      <div class="md-layout-item">
+        <p> Chercher par nom :
+          <input type="text" v-model="nomRecherche" />
+        </p> </div>
+        <div class="md-layout-item">
+        <p> Chercher par ville :
+          <input @input="chercherRestaurant()" type="text" v-model="villeRecherche" />
+        </p> </div>
+      <div class="md-layout-item">
+      <md-button class="md-raised" @click="chercherRestaurant()">Rechercher</md-button>
+      </div>
+      <div class="md-layout-item">
+      <p> Nombre de restaurants par page :
+        <input @change="getRestaurantFromServer()" type="range" min="2" max="100" value="10" v-model="pageSize"/>
+        {{ pageSize }}
+      </p>
+      </div>
+    </div>
+    
+    <md-button class="chgtPage md-raised" :disabled="page === 1" @click="pagePrecedent()">
+      Précédent </md-button>
+    &nbsp;&nbsp;
+    <md-button class="chgtPage md-raised" :disabled="page === nbPageTotal" @click="pageSuivante()"> 
+      Suivant</md-button>
     <p>Page {{ page }} sur {{ nbPageTotal }}</p>
     <br />
+
     <md-table v-model="restaurants" md-sort="name" md-sort-order="asc">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="Nom" md-sort-by="name">{{
@@ -46,20 +40,26 @@
         <md-table-cell md-label="Ville" md-sort-by="borough">{{
           item.borough
         }}</md-table-cell>
-        <md-table-cell md-label="Note la plus récente" md-sort-by="grades[0].score">{{
+        <md-table-cell md-label="Note la plus récente" md-sort-by="score in restaurant.grades[0]" md-numeric>{{
           item.grades[0].score
         }}</md-table-cell>
         <md-table-cell md-label="Actions">
-           <md-button class="md-primary">
-             <router-link :to="'/restaurant/' + item._id">[Détail]</router-link>
-           </md-button>
-          
-          <md-button class="md-accent" @click="supprimerRestaurant(item._id)">[Supprimer]</md-button
-    >
-          
+          <md-button class="md-primary">
+            <router-link :to="'/restaurant/' + item._id">[Détail]</router-link>
+          </md-button>
+          <md-button class="md-accent" @click="supprimerRestaurant(item)">[Supprimer]</md-button>
         </md-table-cell>
       </md-table-row>
     </md-table>
+
+    <div v-if="totalRestaurant === 0">
+      <md-empty-state
+        md-icon="done"
+        md-label="Aucun restaurant trouvé"
+        md-description="Vérifiez l'orthographe et relancez votre recherche"
+      >
+      </md-empty-state>
+    </div>
 
     <md-button class="md-raised" :disabled="page === 0" @click="pagePrecedent()"
       >Précédent</md-button
@@ -89,29 +89,34 @@ export default {
       pageSize: 10,
       nbPageTotal: 0,
       nomRecherche: "",
-      villeRecherche:"",
-      score: 0
+      villeRecherche: "",
+      score: 0,
     };
   },
   methods: {
+    /** fonction pour aller à la page précédente */
     pagePrecedent() {
       if (this.page === 1) return;
       this.page--;
       this.getRestaurantFromServer();
     },
+
+    /** fonction pour aller à la page suivante */
     pageSuivante() {
       if (this.page === this.dernierePage) return;
       this.page++;
       this.getRestaurantFromServer();
     },
-    getRestaurantFromServer() {
+
+    /** fonction pour récupérer les données depuis le serveur */
+    async getRestaurantFromServer() {
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
       url += "&pagesize=" + this.pageSize;
       url += "&name=" + this.nomRecherche;
-      url += "&ville=" + this.villeRecherche;
+      //url += "&ville=" + this.villeRecherche;
 
-      fetch(url)
+      await fetch(url)
         .then((responseJSON) => {
           responseJSON.json().then((resJS) => {
             // Maintenant res est un vrai objet JavaScript
@@ -121,21 +126,46 @@ export default {
           });
         })
         .catch((err) => {
+          console.log("erreur dans la fonction getRestaurantFromServer"+err);
+        });
+    },
+
+    /** fonction pour rechercher un restaurant dans la base de données*/
+    chercherRestaurant: _.debounce(function() {
+      //this.page === 1;
+      console.log("test avant get");
+      this.getRestaurantFromServer();
+      console.log("test apres get");
+    }, 300),
+
+    /** fonction pour supprimer un restaurant de la base de données*/
+    supprimerRestaurant(index) {
+      this.restaurants.splice(index, 1);
+      let url = "http://localhost:8080/api/restaurants/" + index._id;
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((responseJSON) => {
+          responseJSON.json().then((resJS) => {
+            // Maintenant res est un vrai objet JavaScript
+            console.log(resJS.msg);
+            this.msg = resJS.msg;
+            //on rafraichit la vue
+            this.getRestaurantFromServer();
+          });
+        })
+        .catch(function (err) {
           console.log(err);
         });
     },
-    chercherRestaurant: _.debounce(function () {
-      this.getRestaurantFromServer();
-    }, 300),
 
-    supprimerRestaurant(index) {
-      this.restaurants.splice(index, 1);
-    },
     getColor(index) {
       return index % 2 ? "lightBlue" : "pink";
     },
   },
-  mounted() {
+
+  async mounted() {
     this.getRestaurantFromServer();
   },
 };
@@ -153,11 +183,11 @@ export default {
   border: 1px solid rgba(#000, 0.26);
   background: rgba(#000, 0.06);
 }
+
 .chgtPage {
-  display:inline-block;
+  display: inline-block;
   align-content: left;
   align-items: left;
   justify-content: center;
 }
-
 </style>

@@ -5,7 +5,9 @@
     <h1>Nom du restaurant : {{ restaurant.name }}</h1>
     <h1>Situé dans la ville : {{ restaurant.borough }}</h1>
     <h1>Note du restaurant : {{ restaurant.grades[0].score }}</h1>
-    <h1>Localisation du restaurant :</h1>
+    <h1>Adresse du restaurant : {{ restaurant.address.building }}, {{ restaurant.address.street }} , {{ restaurant.borough }} {{ restaurant.address.zipcode }}</h1>
+    <h1>Coordonnées du restaurant : {{ restaurant.address.coord[0] }} {{ restaurant.address.coord[1] }}</h1>
+    <h1>Localisation du restaurant : </h1>
     <iframe
       width="50%"
       height="50%"
