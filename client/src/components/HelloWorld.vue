@@ -1,5 +1,5 @@
 <template>
-  <div id="hello">
+  <div id="accueil">
     <h1 style="text-align:center">{{msg}}</h1>
     <div>
       <h2 style="margin-left:20px">TOP 5 des restaurants du moment</h2>
@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Accueil',
   props: {
     msg: String
   },
@@ -87,7 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #hello{
+  #accueil{
     text-align: left;
   }
 

@@ -1,31 +1,32 @@
 <template>
   <div>
     <img class="image" src="../assets/Test.jpg" />
-    <h1>Détail du restaurant qui a pour id : {{ id }}</h1>
-    <h1>Nom du restaurant : {{ restaurant.name }}</h1>
-    <h1>Situé dans la ville : {{ restaurant.borough }}</h1>
-    <h1>Note du restaurant : {{ restaurant.grades[0].score }}</h1>
-    <h1>Adresse du restaurant : {{ restaurant.address.building }}, {{ restaurant.address.street }} , {{ restaurant.borough }} {{ restaurant.address.zipcode }}</h1>
-    <h1>Coordonnées du restaurant : {{ restaurant.address.coord[0] }} {{ restaurant.address.coord[1] }}</h1>
-    <h1>Localisation du restaurant : </h1>
-    <iframe
-      width="50%"
-      height="50%"
-      frameborder="0"
-      allowfullscreen
-      src="//umap.openstreetmap.fr/fr/map/new/?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false"
-    >
-    </iframe>
-    <p><a href="//umap.openstreetmap.fr/fr/map/new/">Voir en plein écran</a></p>
+    <h2>Détail du restaurant qui a pour id : {{ id }}</h2>
+    <h2>Nom du restaurant : {{ restaurant.name }}</h2>
+    <h2>Situé dans la ville : {{ restaurant.borough }}</h2>
+    <h2>Note du restaurant : {{ restaurant.grades[0].score }}</h2>
+    <h2>
+      Adresse du restaurant : {{ restaurant.address.building }},
+      {{ restaurant.address.street }} , {{ restaurant.borough }}
+      {{ restaurant.address.zipcode }}
+    </h2>
+    <h2>
+      Coordonnées du restaurant : {{ restaurant.address.coord[0] }}
+      {{ restaurant.address.coord[1] }}
+    </h2>
+    <h2>Localisation du restaurant :</h2>
+
+    <div id="mapResto">
+	    <!-- Ici s'affichera la carte -->
+	  </div>
+    
   </div>
 </template>
 
 <script>
 export default {
   name: "Restaurant",
-  props: {
-    
-  },
+  props: {},
   computed: {
     id() {
       return this.$route.params.id;
@@ -33,7 +34,11 @@ export default {
   },
   data: function () {
     return {
-      restaurant: null,
+      restaurant: null, 
+      coordonnees: {
+        lat:0,
+        lng:0
+      }
     };
   },
   mounted() {
@@ -49,7 +54,14 @@ export default {
         this.restaurant = data.restaurant;
       });
   },
-  methods: {},
+  methods: {
+    initMap() {
+      //var lat = this.restaurant.address.coord[0];
+      //var lon = this.restaurant.address.coord[1];
+     
+      
+    },
+  },
 };
 </script>
 
@@ -64,4 +76,7 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.mapResto{
+  height: 500px;
+}
 </style>

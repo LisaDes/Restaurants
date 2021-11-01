@@ -12,7 +12,7 @@
             Home
           </md-menu-item>
           <md-menu-item to='/ListeDesRestaurants'>
-            <md-icon>menu</md-icon>
+            <md-icon>view_list</md-icon>
             Liste des Restaurants
           </md-menu-item>
           <md-menu-item to='/AjouterUnRestaurant'>

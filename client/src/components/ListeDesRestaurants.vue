@@ -3,15 +3,12 @@
     <h1>Nombre de restaurants : {{ totalRestaurant }}</h1>
     <div class="md-layout md-gutter">
       <div class="md-layout-item">
-        <p> Chercher par nom :
+      <p> Chercher par nom :
           <input type="text" v-model="nomRecherche" />
-        </p> </div>
-        <div class="md-layout-item">
-        <p> Chercher par ville :
-          <input @input="chercherRestaurant()" type="text" v-model="villeRecherche" />
-        </p> </div>
-      <div class="md-layout-item">
-      <md-button class="md-raised" @click="chercherRestaurant()">Rechercher</md-button>
+      </p> 
+      <p> 
+        <md-button class="md-raised" @click="chercherRestaurant()">Rechercher</md-button>
+      </p> 
       </div>
       <div class="md-layout-item">
       <p> Nombre de restaurants par page :
@@ -54,7 +51,7 @@
 
     <div v-if="totalRestaurant === 0">
       <md-empty-state
-        md-icon="done"
+        md-icon="search"
         md-label="Aucun restaurant trouvé"
         md-description="Vérifiez l'orthographe et relancez votre recherche"
       >
@@ -126,16 +123,14 @@ export default {
           });
         })
         .catch((err) => {
-          console.log("erreur dans la fonction getRestaurantFromServer"+err);
+          console.log("erreur dans la fonction getRestaurantFromServer "+err);
         });
     },
 
     /** fonction pour rechercher un restaurant dans la base de données*/
     chercherRestaurant: _.debounce(function() {
-      //this.page === 1;
-      console.log("test avant get");
+      this.page = 1; //pour revenir à la page 1 des restaurants
       this.getRestaurantFromServer();
-      console.log("test apres get");
     }, 300),
 
     /** fonction pour supprimer un restaurant de la base de données*/
@@ -156,7 +151,7 @@ export default {
           });
         })
         .catch(function (err) {
-          console.log(err);
+          console.log("erreur dans le fetch de supprimerRestaurant "+err);
         });
     },
 

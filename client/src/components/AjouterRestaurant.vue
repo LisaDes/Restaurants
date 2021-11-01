@@ -2,7 +2,7 @@
   <div>
     <h1>Formulaire d'ajout d'un restaurant</h1> &nbsp;
 
-    <form @submit.prevent="ajouterRestaurant">
+    <form @submit.prevent="ajouterRestaurant(event)">
         <label>
             Nom : <input name="name" type="text" required v-model="name" > <slot></slot>
         </label>
@@ -47,7 +47,7 @@ export default {
     async getRestaurantFromServer() {
       let url = "http://localhost:8080/api/restaurants?";
 
-      fetch(url)
+      await fetch(url)
         .then((responseJSON) => {
           responseJSON.json().then((resJS) => {
             // Maintenant res est un vrai objet JavaScript
@@ -61,7 +61,8 @@ export default {
     },
 
     /** fonction pour ajouter un restaurant à la base de données */
-    async ajouterRestaurant(event) {
+    ajouterRestaurant(event) {
+      console.log("entrée dans l'ajout");
       // Récupération du formulaire. Pas besoin de document.querySelector
       // ou document.getElementById puisque c'est le formulaire qui a généré
       // l'événement
@@ -70,14 +71,14 @@ export default {
       // Récupération des valeurs des champs du formulaire
       // en prévision d'un envoi multipart en ajax/fetch
       let donneesFormulaire = new FormData(form);
-
-      let url = "http://localhost:8080/api/restaurants?";
+      console.log(donneesFormulaire);
+      let url = "http://localhost:8080/api/restaurants";
 
       fetch(url, {
           method: "POST",
           body: donneesFormulaire,
       })
-      .then((responseJSON) => {
+      .then(function(responseJSON) {
         responseJSON.json().then((resJS) => {
             // Maintenant res est un vrai objet JavaScript
             console.log(resJS.msg);
@@ -87,7 +88,7 @@ export default {
           });
       })
       .catch(function (err) {
-        console.log(err);
+        console.log("erreur dans le fetch d'ajout "+err);
       });
 
       //vider les champs après saisie
@@ -97,18 +98,7 @@ export default {
   },
 
   mounted() {
-    console.log("Avant affichage")
-    //console.log("ID = " + this.id)
     
-    let url = "http://localhost:8080/api/restaurants/"+ this.id;
-    fetch(url)
-    .then(response => {
-      return response.json();
-    }).then(data => {
-      this.restaurant = data.restaurant
-      //console.log(data.restaurant.name)
-      console.log(data.name)
-    })
     this.getRestaurantFromServer();
     
   },
