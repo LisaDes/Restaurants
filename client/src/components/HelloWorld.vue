@@ -63,7 +63,8 @@ export default {
   },
   mounted() {
     this.getRestaurantFromServer();
-  },methods: {
+  },
+  methods: {
     getRestaurantFromServer() {
       let url = "http://localhost:8080/api/restaurants?";
 
