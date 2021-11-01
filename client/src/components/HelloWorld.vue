@@ -9,7 +9,7 @@
           <img src="../assets/Test.jpg">
           <md-bottom-bar-item :to="'/restaurant/'+this.restaurants[0]._id"  md-label="Détails" md-icon="info"></md-bottom-bar-item>
           <md-bottom-bar-item  exact :md-label="this.restaurants[0].name"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          <md-bottom-bar-item md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
@@ -17,7 +17,7 @@
           <img src="../assets/Test.jpg">
           <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[1]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
           <md-bottom-bar-item :md-label="this.restaurants[1].name"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          <md-bottom-bar-item md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
@@ -25,7 +25,7 @@
           <img src="../assets/Test.jpg">
           <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[2]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
           <md-bottom-bar-item :md-label="this.restaurants[2].name"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          <md-bottom-bar-item md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
@@ -33,7 +33,7 @@
           <img src="../assets/Test.jpg">
           <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[3]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
           <md-bottom-bar-item :md-label="this.restaurants[3].name"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          <md-bottom-bar-item md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
           </md-bottom-bar>
       </div>
       <div class="phone-viewport">
@@ -41,7 +41,7 @@
           <img src="../assets/Test.jpg">
           <md-bottom-bar-item :to="'/restaurant/'+ this.restaurants[4]._id" exact md-label="Détails" md-icon="info"></md-bottom-bar-item>
           <md-bottom-bar-item :md-label="this.restaurants[4].name"></md-bottom-bar-item>
-          <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
+          <md-bottom-bar-item md-label="Favoris" md-icon="favorite"></md-bottom-bar-item>
          </md-bottom-bar>
       </div>
     </div>
