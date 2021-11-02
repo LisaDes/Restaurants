@@ -39,7 +39,10 @@
         <l-marker :lat-lng="LMarker"></l-marker>
       </l-map>
     </div>
-
+    
+    <h2>
+      Commentaires sur le restaurant : {{ restaurant.name }}
+    </h2>
   </div>
 </template>
 
