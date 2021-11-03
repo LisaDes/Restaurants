@@ -19,7 +19,7 @@
 Pour ce projet, nous avons eu l'idée de partir d'un site dit "traditionnel", quelque chose de simple mais de fonctionnel. Nous avons ajouté : 
 1. Page d'accueil avec un TOP 5
 2. Un formulaire d'ajout de restaurant externe à la liste
-3. une refonte du menu et de la barre de navigation
+3. Une refonte du menu et de la barre de navigation
 
 ### Page d'accueil et TOP 5
 
