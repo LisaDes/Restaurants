@@ -23,7 +23,7 @@ Pour ce projet, nous avons eu l'idée de partir d'un site dit "traditionnel", qu
 
 ### Page d'accueil et TOP 5
 
-Ainsi nous avons ajouté une page d'accueil contenant un TOP 5 des meilleurs restaurant du moment. Pour le faire nous avons simplement fait une refonte de la page Hello World pour la transformé en page d'accueil. Pour le TOP 5, nous avons pris un Bottom Bar déjà fait de vue-matérial (lien: https://www.creative-tim.com/vuematerial/components/bottom-bar).
+Ainsi nous avons ajouté une page d'accueil contenant un TOP 5 des meilleurs restaurant du moment. Pour le faire nous avons simplement fait une refonte de la page Hello World pour la transformer en page d'accueil. Pour le TOP 5, nous avons pris un Bottom Bar déjà fait de vue-matérial (lien: https://www.creative-tim.com/vuematerial/components/bottom-bar).
 
 ### Ajouter un restaurant
 
